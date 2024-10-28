@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from Settings import player_left,player_right,x_position,y_position,movement
 
 # initiate pygame and give permission
 # to use pygame's functionality.
@@ -9,17 +10,6 @@ pygame.init()
 # create the display surface object
 # of specific dimension.
 window = pygame.display.set_mode((800, 700))
-
-player_left = [
-    pygame.image.load('../Sprite/Mem2.png'),
-    pygame.image.load('../Sprite/Mem3.png')
-]
-
-player_right = [
-    pygame.image.load('../Sprite/Mem4.png'),
-    pygame.image.load('../Sprite/Mem5.png'),
-]
-
 
 player_count = 0
 
@@ -33,18 +23,6 @@ pygame.display.set_caption('ALemario')
 
 # Add player sprite
 image = pygame.image.load(r'../Sprite/Mem1.png')
-
-
-# Store the initial
-# coordinates of the player in
-# two variables i.e. x and y.
-x_position = 350
-y_position = 600
-
-
-# Create a variable to store the
-# velocity of player's movement
-velocity = 12
 
 # Creating an Infinite loop
 run = True
@@ -100,9 +78,9 @@ while run:
     # Changing the coordinates
     # of the player
     if key_pressed_is[K_LEFT] and x_position > 10:
-        x_position -= 0.35
+        x_position -= movement
     if key_pressed_is[K_RIGHT] and x_position < 700:
-        x_position += 0.35
+        x_position += movement
     if not is_jump:
         if key_pressed_is[K_UP]:
             is_jump = True
